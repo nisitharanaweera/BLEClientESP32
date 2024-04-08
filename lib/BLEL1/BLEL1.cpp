@@ -28,13 +28,13 @@ void BLEL1Client::initBLEClient(int ServerCount,BLEAddress serverAddresses[],BLE
     Serial.println("Starting BLE Client...");
   BLEDevice::init("");
 
-  for (int i = 1; i < ServerCount; i++){
+  for (int i = 0; i < ServerCount; i++){
 
     pClients[i] = BLEDevice::createClient();
     pClients[i]->setClientCallbacks(new MyClientCallbacks());
   }
 
-  for (int i = 1; i < ServerCount; i++)
+  for (int i = 0; i < ServerCount; i++)
   {
     Serial.print("Connecting to server ");
     Serial.println(i + 1);
@@ -50,7 +50,7 @@ void BLEL1Client::initBLEClient(int ServerCount,BLEAddress serverAddresses[],BLE
 
 
 void BLEL1Client::getBleData(int ServerCount,BLEClient *pClients[],BLEUUID serviceUUID, BLEUUID charUUID){
-    for (int i = 1; i < ServerCount; i++)
+    for (int i = 0; i < ServerCount; i++)
   {
 
     if (pClients[i]->isConnected()){
